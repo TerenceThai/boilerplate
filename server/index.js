@@ -34,12 +34,13 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-// Port
+// Port and Database
 const port = process.env.PORT || 3000;
-const {db} = require('./db')
+const {db} = require('./db/index')
 
 const init = async () => {
   await db.sync()
+  console.log('Database is synced!!!')
   app.listen(port, () => console.log(`
 
   Listening on port ${port}

@@ -1,15 +1,24 @@
-const Sequelize = require('sequelize')
+const db = require('./database')
 
-// require models here
+// The purpose of this module is to bring your Sequelize instance (`db`) together
+// with your models (which you should define in separate modules in this directory).
+// Example:
+
+// const Puppy = require('./puppy')
+// const Owner = require('./owner')
+
+// models here ----------------------
 
 
-// create the database instance that can be used in other database files
-const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/boilermaker`, {
- logging: false
-})
+// After you've required all of your models into this module, you should establish
+// associations (https://sequelize-guides.netlify.com/association-types/) between them here as well!
+// Example:
 
-// associations
+// Puppy.belongsTo(Owner)
 
+// associations here ---------------------
 
-// export db and models
-module.exports = { db }
+module.exports = {
+   // Include your models in this exports object as well!
+   db
+ }
